@@ -1,12 +1,19 @@
-# fruit-identification
+# 水果分类 fruit-classifer
 
-基于深度学习的水果识别系统
+基于深度学习的水果分类
 
-本项目使用迁移学习技术，对在ImageNet数据集上带有预训练权重VGG16、ResNet50、MobileNetV2、DenseNet121模型进行微调，并使用在水果数据集上。最终训练后的模型能够准确识别输入图片水果类别，并且最高准确率达到94.08%。
+本项目使用迁移学习技术，对在ImageNet数据集上带有预训练权重VGG16、ResNet50、MobileNetV2、DenseNet121模型进行微调，然后将其用在水果数据集上。最终训练后的模型能够准确对输入图片进行分类，并且最高准确率达到94.08%。
 
-Deep learning based fruit recognition system 
+一、数据集制作
 
-This project uses transfer learning technology to fine-tune the VGG16, ResNet50, MobileNetV2, DenseNet121 models with pre-trained weights on the ImageNet dataset, and use it on the fruit dataset. The final trained model can accurately identify which fruit the input image belongs to, and the highest accuracy rate reaches 94.08%.
+1.1爬虫获取数据
 
-水果类别：苹果、桃、芒果、葡萄
+```python
+FRUIT_CLASS = {
+    '苹果': '苹果',
+    '香蕉': '香蕉',
+    '桃子': '桃子',
+    '葡萄': '葡萄'
+}
+```
 
