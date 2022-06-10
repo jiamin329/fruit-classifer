@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- import CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>水果分类系统</title>
+    <!-- 引入网页头标 -->
+    <link rel="shortcut icon" href="favicon.ico">
+    <!-- 引入css -->
+    <link rel="stylesheet" href="./css/index-2.css">
+
+    <!-- 引入字体图标 -->
+    <link rel="stylesheet" href="./font/iconfont.css">
+    <!-- 引入初始化css -->
+    <link rel="stylesheet" href="./css/rest.css">
+    <!-- 引入js css -->
+    <link rel="stylesheet" href="./css/js.css">
+    <!-- 引入外部js -->
+    <script src="./js/jquery.min.js"></script>
+    <!-- 引入页面js -->
+    <script src="./js/index.js"></script>
+
+
+
+	<meta name="renderer" content="webkit|ie-comp|ie-stand">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport"
+		content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+		<!-- 自定义目录下css -->
+		<link rel="stylesheet" href="../static/css/font.css">
+		<link rel="stylesheet" href="../static/css/xadmin.css">
+		<link rel="stylesheet" href="../static/css/swiper-bundle.min.css">
+		<!-- layui css -->
+		<link rel="stylesheet" href="../static/lib/layui/css/layui.css">
+		
+		<!-- layui admin css -->
+		<link rel="stylesheet" href="../static/lib/layuiadmin/lib/layui/css/layui.css" media="all">
+		<link rel="stylesheet" href="../static/lib/layuiadmin/lib/layui/css/admin.css" media="all">
+		<!-- <link rel="stylesheet" href="../static/lib/layuiadmin/lib/layui/css/layui_old.css" media="all"> -->
+		<link rel="stylesheet" href="../static/lib/layuiadmin/style/admin.css" media="all">
+
+
+		<!-- 引用的js -->
+		<script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+		<script src="../static/lib/layui/layui.js" charset="utf-8"></script>
+		<script type="text/javascript" src="../static/js/xadmin.js"></script>
+		<style>
+			.swiper {
+        width: 600px;
+        height: 240px;
+      }
+
+      .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+      }
+
+      .swiper-slide img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .swiper {
+        margin-left: auto;
+        margin-right: auto;
+      }
+		</style>
+</head>
+
+<body>
+
+
+		<ul class="layui-nav" lay-filter="">
+			<li class="layui-nav-item layui-this"><a href="index.html">系统首页</a></li>
+			<li class="layui-nav-item"><a href="dict.html">水果百科</a></li>
+			<li class="layui-nav-item"><h4>水果分类系统</h4></div>		
+		</ul>
+	<!-- 顶部结束 -->
+
+	
+
+	<!-- 中部开始 -->
+
+
+	<div>
+		<div class="layui-fluid">
+			<div class="layui-row layui-col-space15">
+				<div class="layui-col-md4">
+					<div class="layui-card">
+						<div class="layui-card-header"><h1>识别步骤</h1></div>
+						<div class="layui-card-body">
+							<ul class="layui-timeline">
+								<li class="layui-timeline-item">
+									<i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+									<div class="layui-timeline-content layui-text">
+										<h3 class="layui-timeline-title">步骤1——上传图片</h3>
+										<p>请在右侧点击“＋” 上传待识别图片。
+									
+										</p>
+									</div>
+								</li>
+								<li class="layui-timeline-item">
+									<i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+									<div class="layui-timeline-content layui-text">
+										<h3 class="layui-timeline-title">步骤2——水果分类</h3>
+										<p>上传图片后，请等待识别结果显示。</p>
+									</div>
+								</li>
+					
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="layui-col-md8">
+					<div class="layui-card">
+						<div class="layui-card-header"><h1>上传图片</h1></div>
+						<div class="layui-card-body">
+                            <div id="app">
+                                <el-card class="box-card">
+                                    <el-upload
+                                            action="/api/v1/pets_classify/"
+                                            list-type="picture-card"
+                                            :on-preview="handlePictureCardPreview"
+                                            :on-success="handleUploadSuccess"
+                                            :on-remove="handleRemove">
+                                        <i class="el-icon-plus"></i>
+                                    </el-upload>
+                                    <el-dialog :visible.sync="dialogVisible">
+                                        <img width="100%" :src="dialogImageUrl" alt="">
+                                    </el-dialog>
+                                </el-card>
+                            </div>
+			
+						</div>
+					</div>
+				</div>
+
+			</div>
+			
+		</div>
+	</div>
+
+	<!-- 中部结束 -->
+
+	<!-- 底部开始 -->
+	<div class="footer">
+			<div class="copyright">Copyright ©2022 DumbDumbDumbDumb
+				本项目开源地址：https://github.com/jiamin329/fruit-classifer</div>
+	</div>
+	<div style="position: absolute;bottom: 42px;left: 0px;"><img src="../static/images/bg.gif" width="200" height="200"></div>
+	
+	<div class="swiper mySwiper" style="position: absolute;bottom: 80px;right: 10%;text-align: center;">
+		<label style="font-size: large; color: #226111;; size: 18px;">常见水果图片展示</label>
+		<div class="swiper-wrapper">
+		  <div class="swiper-slide">
+			  <img src="../static/images/p1.jpg">
+		  </div>
+		  <div class="swiper-slide">
+			<img src="../static/images/p2.jpg">
+		  </div>
+		  <div class="swiper-slide">
+			<img src="../static/images/p3.jpg">
+		  </div>
+		  <div class="swiper-slide">
+			<img src="../static/images/p4.jpg">
+		  </div>
+		  <div class="swiper-slide">
+			<img src="../static/images/p5.jpg">
+		  </div>
+
+		</div>
+		<div class="swiper-button-next"></div>
+		<div class="swiper-button-prev"></div>
+		<div class="swiper-pagination"></div>
+	  </div>
+  
+	  <!-- Swiper JS -->
+	  <script src="../static/js/swiper-bundle.min.js"></script>
+  
+	  <!-- Initialize Swiper -->
+	  <script>
+		var swiper = new Swiper(".mySwiper", {
+		  slidesPerView: 1,
+		  spaceBetween: 30,
+		  loop: true,
+		  pagination: {
+			el: ".swiper-pagination",
+			clickable: true,
+		  },
+		  autoplay: {
+           delay: 3000,
+           disableOnInteraction: false,
+         },
+		  navigation: {
+			nextEl: ".swiper-button-next",
+			prevEl: ".swiper-button-prev",
+		  },
+		});
+	  </script>
+
+	<!-- 底部结束 -->
+</body>
+
+
+<!-- import Vue before Element -->
+
+<!--script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script-->
+<!--script src="vue.js"></script-->
+<script src="https://unpkg.com/vue@2.6.14/dist/vue.js"></script>
+
+<!-- import JavaScript -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data() {
+            return {
+                dialogImageUrl: '',
+                dialogVisible: false
+            };
+        },
+        created(){
+            console.log(11)
+        },
+        methods: {
+            handleRemove(file, fileList) {
+                console.log(file, fileList);
+                console.log(this.dialogImageUrl);
+            },
+            handlePictureCardPreview(file) {
+                this.dialogImageUrl = file.url;
+                this.dialogVisible = true;
+            },
+            handleUploadSuccess(response, file, fileList) {
+                this.$notify({
+                    title: '识别结果',
+                    message: response.data.msg,
+                    dangerouslyUseHTMLString: true,
+                    type: 'success',
+                    duration: 3000
+                });
+            }
+        }
+    })
+</script>
+</html>
+
+
+
+<style scoped>
+	h1 {
+		color: #226111;
+		font-size: 2.3em;
+	}
+	h2 {
+		color: #5fc285;
+		font-size: 2.3em;
+	}
+	h3 {
+		color: #5fc285;
+		font-size: 36px;
+	}
+	.layui-nav {
+    position: relative;
+    padding: 0 20px;
+    background-color: #308938 !important;
+    color: #d7c07f;
+    border-radius: 2px;
+    font-size: 0;
+    box-sizing: border-box;
+	}
+	:root {
+    --swiper-theme-color: #298119 !important;
+	}
+	.footer {
+    position: fixed;
+    bottom: 0px;
+    margin-bottom: 0px;
+    width: 100%;
+    background-color: #308938 !important;
+    border-top: 1px solid rgb(133 30 20 / 20%);
+    line-height: 40px;
+ 
+	}
+	
+element.style {
+    position: absolute;
+    bottom: 60px;
+    right: 48px;
+    text-align: center;
+}
+
+.swiper {
+    width: 580px;
+    height: 200px;
+}
+.layui-nav * {
+    font-size: 24px;
+}
+</style>
