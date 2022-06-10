@@ -75,4 +75,4 @@ def my_densenet():
 
 运行app.py在本地计算机使用系统，地址为http://192.168.1.29:5000/
 
-![image-20220610234229395](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20220610234229395.png)
+
